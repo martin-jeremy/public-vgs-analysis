@@ -17,6 +17,9 @@ df = pd.read_csv('./data/raw/vgchartz-2024.csv')
 df['release_date'] = pd.to_datetime(df['release_date'])
 df['last_update'] = pd.to_datetime(df['last_update'])
 
+# Datetime could be informative, but they are not very easy to manipulate with, we will create a column keeping only release year
+df['release_year'] = df['release_date'].dt.year.astype('float64')
+
 # Get some information about our dataset
 df.info()
 df.describe()
