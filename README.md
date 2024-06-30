@@ -10,6 +10,40 @@
 
 ---
 
+## 01/07/2024
+
+🎮 Jour 2 de notre aventure data dans l'univers des jeux vidéo ! 📊
+
+Aujourd'hui, plongeons dans la visualisation et l'exploration initiale de notre dataset VGSales 2024. Voici mes découvertes passionnantes :
+
+1️⃣ Visualisation : J'ai transformé nos données brutes en graphiques parlants. Un vrai changement de perspective ! Ces visualisations nous offrent déjà des informations précieuses avant même l'analyse approfondie.
+
+2️⃣ Types de variables : Notre dataset est un cocktail fascinant de variables discrètes (6/14), continues (6/14) et de dates (2/14). Une richesse à explorer, mais qui apporte son lot de défis !
+
+3️⃣ Valeurs manquantes : Alerte ! Beaucoup d'entrées incomplètes. Un vrai casse-tête pour notre analyse future. Certaines s'expliquent (pas de mises à jour pour les jeux anciens), mais attention aux biais potentiels !
+
+4️⃣ Focus sur les chiffres : 
+- Les boxplots donnent un aperçu global, mais les histogrammes révèlent les vraies pépites :
+    - 2009 : l'année record pour les sorties de jeux !
+    - Le PC, champion du nombre de titres, mais... 
+
+🤔 Surprise du chef ! En termes de ventes totales, le PC n'est qu'à la 12ème place ! Comment expliquer ce paradoxe ?
+
+Mes hypothèses :
+- Les valeurs manquantes font-elles des siennes ?
+- Une source majeure manquante (Steam, on te voit) ?
+- Les jeux PC : nombreux mais pas des best-sellers ?
+
+À vous de jouer ! Quelle est votre théorie ? 
+
+Partagez vos idées en commentaire. Ensemble, déchiffrons ce mystère vidéoludique ! 💡
+
+#DataScience #JeuxVidéo #AnalyseDeDonnées #Python #DataViz
+
+P.S. : Likez et partagez pour agrandir notre communauté de data-gamers passionnés ! 🚀
+
+P.P.S. : Curieux de voir les coulisses ? Le code de cette analyse est 100% dispo sur GitHub ! Rendez-vous juste ici ➡️ https://github.com/martin-jeremy/public-vgs-analysis
+
 ## 26/06/2024
 
 🎮 C'est parti pour notre aventure data ! Plongeons dans le monde fascinant des jeux vidéo ! 🕹️
