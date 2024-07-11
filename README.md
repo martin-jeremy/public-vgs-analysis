@@ -10,6 +10,28 @@
 
 ---
 
+## 11/07/2024
+
+🎮 Jour 3 de notre aventure data dans l'univers des jeux vidéo ! 📊
+
+Aujourd'hui, focus sur les valeurs manquantes ! Elles nous embêtent, mais on va peut-être les transformer en opportunité. 
+
+En creusant dans le dataset VGSales 2024, j'ai découvert que de nombreuses entrées ont toutes (ou presque) leurs colonnes à NULL. Certaines catégories sont même entièrement vides ! Par exemple, les entrées pour les consoles "Séries" (comme "Call of Duty", "Pokemon", "Legend of Zelda") sont toutes à NULL. 
+
+Je vais me faire une copie de cette sous-partie, je suis sûr que ça nous servira plus tard. Pour la suite, on va nettoyer une bonne partie en supprimant les entrées ayant "total_sales" à NULL. Enfin, hypothèse 100% biaisée : les jeux avec "last_update" à NULL n'ont jamais eu de mise à jour... le jeux vidéo avant l'existence du "Patch Day One", toute une époque, n'est-ce pas ?!
+
+J'ai mis en place une fonction pour voir le Top N par catégorie, et c'est plutôt informatif. On y voit un manque de diversité dans les jeux les plus vendus (et ils ne sont même pas à mon goût 😑). On apprend que les branches d'EA sont particulièrement prolifiques, tandis que Nintendo se retrouve en 10e place ! Pour vous donner une idée, sur Kaggle et les datasets d'avant 2016, ils étaient en première position ! La fin de la Wii a-t-elle enterrée Nintendo ?
+
+La prochaine fois, on va creuser un peu plus : OneHot encoding, corrélation, etc.. J'ai trop hâte ! Et vous ?
+
+🤔 Pourquoi Nintendo a-t-il chuté sur cette première moitié de la décennie ? Un indice 🔎, ça a plus à voir avec le jeux de données qu'avec la R&D de Nintendo. 💡 Partagez vos idées en commentaire !
+
+hashtag#DataScience hashtag#JeuxVidéo hashtag#AnalyseDeDonnées hashtag#Python hashtag#DataViz
+
+P.S. : Likez et partagez pour que d'autres passionnés de data et de gaming nous rejoignent dans cette aventure ! 🚀
+
+P.P.S. : Curieux de voir les coulisses ? Le code de cette analyse est 100% dispo sur GitHub ! Rendez-vous juste ici ➡️ https://lnkd.in/dfi3mzqN
+
 ## 01/07/2024
 
 🎮 Jour 2 de notre aventure data dans l'univers des jeux vidéo ! 📊
