@@ -6,7 +6,7 @@ import pandas as pd
 import seaborn as sns
 
 
-def top_n_barplots(data: pd.DataFrame, category: str, n: int):
+def top_n_barplots(data: pd.DataFrame, category: str, n: int, save: bool):
     topn_games = data.groupby(category)['total_sales'].sum().nlargest(n)
     fig10, ax10 = plt.subplots(figsize=(5, 5))
     sns.barplot(x=topn_games.index, y=topn_games, ax=ax10)
@@ -15,7 +15,7 @@ def top_n_barplots(data: pd.DataFrame, category: str, n: int):
     ax10.set_xlabel(category.title())
     ax10.set_ylabel('Total Sales')
     plt.subplots_adjust(bottom=0.5)
-    plt.show()
+    plt.savefig(f"./fig/9_Top10_by_{category}.png")
 
 
 if __name__ == "__main__":
@@ -45,6 +45,7 @@ if __name__ == "__main__":
     # Finally, we take the hypothesis that if last_update is null, it's because the game never had an update
     # (like the old good time)
     df['last_update'] = df['last_update'].fillna(df['release_date'])
+    df.to_feather('./data/working/3_Cleaned_df.output.feather')
 
     # And I redo the same barplot as precedent to compare
     eda_df['NULL_after'] = df.isnull().sum()
@@ -63,9 +64,9 @@ if __name__ == "__main__":
         top_n_barplots(
             data=df,
             n=10,
-            category=top
+            category=top,
+            save=True
         )
-        plt.savefig(f"./fig/9_Top10_by_{top}.png")
 
     top10_games = df[['title', 'console', 'total_sales']].nlargest(10, columns='total_sales')
     top10_games.index = top10_games.title + ' - ' + top10_games.console
