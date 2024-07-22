@@ -24,7 +24,7 @@ def clustermap_var_by_var(data: pd.DataFrame, var1: str, var2: str, top: int() =
     return cluster_grid
 
 
-def crosstab_var_by_var(data: pd.DataFrame, var1: str, var2: str, top: int() = None):
+def crosstab_var_by_var(data: pd.DataFrame, var1: str, var2: str, top: int() = None, z_score: int() = None):
     sub_df = data[[var1, var2]]
     if top is not None:
         top_var1 = data.groupby(var1)['total_sales'].sum().nlargest(top).index
@@ -32,7 +32,7 @@ def crosstab_var_by_var(data: pd.DataFrame, var1: str, var2: str, top: int() = N
         sub_df = sub_df[df[var1].isin(top_var1) & df[var2].isin(top_var2)]
     sub_ct = pd.crosstab(sub_df[var1], sub_df[var2])
     cluster_grid = sns.clustermap(sub_ct, cmap="Spectral_r", method="complete", dendrogram_ratio=(0, 0), linewidth=.1,
-                                  cbar_pos=None, yticklabels=1, xticklabels=1)
+                                  cbar_pos=None, yticklabels=1, xticklabels=1, z_score=z_score)
     cluster_grid.ax_heatmap.get_xticklabels()
     return cluster_grid
 
@@ -83,3 +83,15 @@ if __name__ == "__main__":
     plt.savefig("./fig/14_Developer_Genre_crossmap_top50.png")
     crosstab_var_by_var(data=df, var1='publisher', var2='genre', top=50)
     plt.savefig("./fig/14_Publisher_Genre_crossmap_top50.png")
+
+    # Finally, crosstab visualisation its great, but its biased by high count values. To be able to compare each genre
+    # represented in each console / developer, we will use the Z-score transformation. It consist to center and reduce
+    # data for each columns or rows to express the results not by count value but by "SD unit above mean".
+    crosstab_var_by_var(data=df, var1='console', var2='genre', z_score=0)
+    plt.savefig("./fig/15_ZSCORE_Console_Genre_crossmap.png")
+    crosstab_var_by_var(data=df, var1='developer', var2='publisher', top=50, z_score=0)
+    plt.savefig("./fig/15_ZSCORE_Developer_Publisher_crossmap_top50.png")
+    crosstab_var_by_var(data=df, var1='developer', var2='genre', top=50, z_score=0)
+    plt.savefig("./fig/15_ZSCORE_Developer_Genre_crossmap_top50.png")
+    crosstab_var_by_var(data=df, var1='publisher', var2='genre', top=50, z_score=0)
+    plt.savefig("./fig/15_ZSCORE_Publisher_Genre_crossmap_top50.png")
