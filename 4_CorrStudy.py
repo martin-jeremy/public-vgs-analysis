@@ -45,6 +45,14 @@ if __name__ == "__main__":
     # Load data
     df = pd.read_feather('./data/working/3_Cleaned_df.output.feather')
 
+    # Correlation analysis is only possible with numerical data, lets give a look :
+    num_df = df.select_dtypes('float64')
+    cor_mat = num_df.corr()
+    sns.clustermap(cor_mat, cmap="Spectral_r", figsize=(6, 6), dendrogram_ratio=(0, 0), method="complete", linewidth=.1,
+                   annot=True, cbar_pos=None)
+    plt.subplots_adjust(left=0, right=0.8, top=1, bottom=0.2)
+    plt.savefig("./fig/12_Numerical_corrmap.png")
+
     # To be able to run a correlation analysis, we need to transform our categories into numerical values.
     # We will try two approaches: label encoding and one-hot encoding.
 
