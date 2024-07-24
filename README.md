@@ -10,6 +10,54 @@
 
 ---
 
+## 25/07/2024
+
+🚀 C'est parti pour le J4 de notre aventure data dans l'univers des jeux vidéo ! 🎮📊
+
+Aujourd'hui, on plonge dans l'encodage et la visualisation des corrélations. Préparez-vous, ça va secouer !
+
+1️⃣ 𝗟𝗮𝗯𝗲𝗹 𝗘𝗻𝗰𝗼𝗱𝗶𝗻𝗴 𝘃𝘀 𝗢𝗻𝗲 𝗛𝗼𝘁 𝗘𝗻𝗰𝗼𝗱𝗶𝗻𝗴 : 𝗹𝗲 𝗺𝗮𝘁𝗰𝗵 𝗱𝘂 𝘀𝗶𝗲̀𝗰𝗹𝗲 !
+
+- 𝗟𝗮𝗯𝗲𝗹 𝗘𝗻𝗰𝗼𝗱𝗶𝗻𝗴 : Simple et rapide. On transforme "Mario" en 1, "Zelda" en 2... Pratique, mais attention aux fausses
+  hiérarchies !
+- 𝗢𝗻𝗲-𝗛𝗼𝘁 𝗘𝗻𝗰𝗼𝗱𝗶𝗻𝗴 : Plus lourd, mais plus précis. Chaque catégorie devient sa propre colonne. Bye bye, hiérarchies non
+  désirées !
+
+𝗠𝗼𝗻 𝗮𝘃𝗶𝘀 ? One-Hot gagne pour la précision, mais Label reste utile pour les datasets XXL !
+
+2️⃣ 𝗖𝗼𝗿𝗿𝗲́𝗹𝗮𝘁𝗶𝗼𝗻 : 𝗹𝗲 𝗱𝗲́𝘁𝗲𝗰𝘁𝗶𝘃𝗲 𝗱𝗲 𝗻𝗼𝘀 𝗱𝗼𝗻𝗻𝗲́𝗲𝘀 !
+On a utilisé la méthode de Pearson pour débusquer les liens cachés entre nos variables. Mais attention ! Corrélation
+n'est pas causalité. On reste vigilants, et on pense à s'assurer de la significativité de nos approches ! 🕵️‍♂️
+
+3️⃣ 𝗨𝗻𝗲 𝗮𝗹𝘁𝗲𝗿𝗻𝗮𝘁𝗶𝘃𝗲 𝗿𝗮𝗽𝗶𝗱𝗲 : 𝗹𝗲 𝗰𝗿𝗼𝘀𝘀𝘁𝗮𝗯
+Pour une vision d'ensemble rapide des relations entre deux variables catégorielles, le crosstab (ou tableau de
+contingence) est une excellente alternative. Moins gourmand en ressources et plus rapide, il permet de visualiser les
+fréquences et pourcentages des catégories croisées. Idéal pour des analyses exploratoires, à condition de savoir quoi
+chercher !
+
+4️⃣ 𝗟𝗮 𝗰𝗲𝗿𝗶𝘀𝗲 𝘀𝘂𝗿 𝗹𝗲 𝗴𝗮̂𝘁𝗲𝗮𝘂 : 𝗹𝗲 𝗭-𝗦𝗰𝗼𝗿𝗲 !
+
+Le Z-score permet de comparer des données de manière équitable en les normalisant. Imagine que tu compares des pommes et
+des oranges, mais grâce au Z-score, tu les transformes toutes en fruits de taille comparable ! 🍎🍊
+
+En pratique, le Z-score indique combien une donnée est éloignée de la moyenne en termes d'écarts-types. Cela permet de
+voir facilement si une donnée est au-dessus ou en dessous de la moyenne et de combien. Que ce soit des notes, des
+tailles, ou n'importe quelles mesures, tout devient comparable sur une même échelle grâce au Z-score.
+
+🤔 𝗣𝗼𝘂𝗿𝗾𝘂𝗼𝗶 𝘁𝗼𝘂𝘁 𝗰𝗲 𝗰𝗶𝗿𝗾𝘂𝗲 ?
+Pour révéler les patterns cachés dans nos données
+Pour éviter les biais dus aux différences d'échelle
+Pour préparer le terrain à des analyses plus poussées
+
+Le grand enseignement du jour : la corrélation, c'est comme un indice dans une enquête. Intéressant, mais à confirmer !
+Toujours croiser avec des tests de significativité pour ne pas tomber dans le piège des fausses pistes.
+
+Alors, qu'en pensez-vous ? Avez-vous déjà utilisé ces techniques ? Partagez vos expériences en commentaire !
+
+#DataAnalyse #JeuxVidéo #Encoding #Corrélation
+
+P.S. : Curieux de voir les coulisses ? Le code est toujours dispo sur GitHub ! 👉 https://lnkd.in/dfi3mzqN
+
 ## 11/07/2024
 
 🎮 Jour 3 de notre aventure data dans l'univers des jeux vidéo ! 📊
@@ -26,7 +74,7 @@ La prochaine fois, on va creuser un peu plus : OneHot encoding, corrélation, et
 
 🤔 Pourquoi Nintendo a-t-il chuté sur cette première moitié de la décennie ? Un indice 🔎, ça a plus à voir avec le jeux de données qu'avec la R&D de Nintendo. 💡 Partagez vos idées en commentaire !
 
-hashtag#DataScience hashtag#JeuxVidéo hashtag#AnalyseDeDonnées hashtag#Python hashtag#DataViz
+#DataScience #JeuxVidéo #AnalyseDeDonnées #Python #DataViz
 
 P.S. : Likez et partagez pour que d'autres passionnés de data et de gaming nous rejoignent dans cette aventure ! 🚀
 
