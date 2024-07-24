@@ -18,9 +18,9 @@ def correlation_pvals(data: pd.DataFrame):
     np.fill_diagonal(pvals_matrix.values, 0.0)
 
     for (col1, col2) in combinations(cols, 2):
-        stat_corr, stat_corr = pearsonr(data.dropna()[col1].values, data.dropna()[col2].values)
+        stat_corr, stat_pvals = pearsonr(data.dropna()[col1].values, data.dropna()[col2].values)
         corr_matrix.loc[col1, col2] = corr_matrix.loc[col2, col1] = stat_corr
-        pvals_matrix.loc[col1, col2] = pvals_matrix.loc[col2, col1] = stat_corr
+        pvals_matrix.loc[col1, col2] = pvals_matrix.loc[col2, col1] = stat_pvals
 
     return corr_matrix, pvals_matrix
 
