@@ -1,15 +1,8 @@
-import matplotlib
-
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
-import numpy as np
 import duckdb
+import plotnine as pn
 
 if __name__ == "__main__":
-    # Some settings
-    matplotlib.use('TkAgg')
-
     # Load data
     df = pd.read_feather('./data/working/3_Cleaned_df.output.feather')
     series_df = pd.read_feather('./data/working/3_Series_df.output.feather')
@@ -29,7 +22,7 @@ if __name__ == "__main__":
     # We have a lot of different Series: 349
     len(set(series_sales.Series))
 
-    # Check the Top 20 most saled series over time
+    # Check the Top 10 most saled series over time
     top10_query = """
     SELECT Series
     FROM series_sales
@@ -55,20 +48,23 @@ if __name__ == "__main__":
     """
     top10_series_sales_by_years = duckdb.query(grouping_query).df()
 
-    # Plot evolution of total sales by year for each series
-    plt.figure(figsize=(14, 8))
-    sns.lineplot(data=top10_series_sales_by_years, x='release_year', y='sales_by_years', hue='Series', marker='o')
-
-    # Customize the plot
-    plt.title('Evolution of Total Sales by Year for Each Series')
-    plt.xlabel('Release Year')
-    plt.ylabel('Total Sales')
-    plt.grid(True)
-    plt.legend(title='Series', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.tight_layout()
-
-    # Show the plot
-    plt.savefig("./fig/16_Top10_TotalSales_by_year_by_series")
+    # # Plot evolution of total sales by year for each series
+    (pn.ggplot(top10_series_sales_by_years, pn.aes(x='release_year', y='sales_by_years', color='Series'))
+     + pn.geom_line()
+     + pn.geom_point()
+     + pn.labs(title='Evolution of Total Sales by Year for Each Series',
+               x='Release Year',
+               y='Total Sales')
+     + pn.theme_minimal()
+     + pn.theme(figure_size=(14, 8),
+                legend_position='right',
+                legend_title=pn.element_text(size=10),
+                legend_box_margin=0.1,
+                panel_grid_major=pn.element_line(color='gray', linetype='dashed'),
+                panel_grid_minor=pn.element_line(color='lightgray', linetype='dotted'),
+                panel_background=pn.element_rect(color='white'))
+     + pn.guides(color=pn.guide_legend(title='Series'))
+     ).save("./fig/16_Top10_TotalSales_by_year_by_series.png")
 
     # Not very informative, we will check the cumulatives sales over time !
     top10_series_sales_by_years['cumulative_sales'] = (
@@ -76,19 +72,88 @@ if __name__ == "__main__":
         .groupby('Series')['sales_by_years']
         .cumsum()
     )
-    # Plot evolution of cumulative sales by year for each series
-    plt.figure(figsize=(14, 8))
-    sns.lineplot(data=top10_series_sales_by_years, x='release_year', y='cumulative_sales', hue='Series', marker='o')
-
-    # Customize the plot
-    plt.title('Evolution of Cumulatives Sales by Year for Each Series')
-    plt.xlabel('Release Year')
-    plt.ylabel('Total Sales')
-    plt.grid(True)
-    plt.legend(title='Series', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.tight_layout()
-
-    # Show the plot
-    plt.savefig("./fig/16_Top10_CumulativeSales_by_year_by_series")
+    (pn.ggplot(top10_series_sales_by_years, pn.aes(x='release_year', y='cumulative_sales', color='Series'))
+     + pn.geom_line()
+     + pn.geom_point()
+     + pn.labs(title='Evolution of Cumulatives Sales for Each Series',
+               x='Release Year',
+               y='Total Sales')
+     + pn.theme_minimal()
+     + pn.theme(figure_size=(14, 8),
+                legend_position='right',
+                legend_title=pn.element_text(size=10),
+                legend_box_margin=0.1,
+                panel_grid_major=pn.element_line(color='gray', linetype='dashed'),
+                panel_grid_minor=pn.element_line(color='lightgray', linetype='dotted'),
+                panel_background=pn.element_rect(color='white'))
+     + pn.guides(color=pn.guide_legend(title='Series'))
+     ).save("./fig/16_Top10_CumulativeSales_by_year_by_series.png")
 
     # We can see now that Call of Duty is clearly the most selled series over years !
+    # This approach could be very informative for another kind of metrics likes Console:
+
+    top10_query = """
+    SELECT console
+    FROM df
+    GROUP BY console
+    ORDER BY SUM(total_sales) DESC
+    LIMIT 10
+    """
+    top10_console = duckdb.query(top10_query)
+
+    filtering_query = """
+    SELECT *
+    FROM top10_console
+    INNER JOIN df
+    USING (console)
+    """
+    top10_console_sales = duckdb.query(filtering_query)
+
+    grouping_query = """
+    SELECT console, release_year, SUM(total_sales) AS sales_by_years
+    FROM top10_console_sales
+    GROUP BY console, release_year
+    ORDER BY console, release_year
+    """
+    top10_console_sales_by_years = duckdb.query(grouping_query).df()
+
+    # # Plot evolution of total sales by year for each series
+    (pn.ggplot(top10_console_sales_by_years, pn.aes(x='release_year', y='sales_by_years', color='console'))
+     + pn.geom_line()
+     + pn.geom_point()
+     + pn.labs(title='Evolution of Total Sales by Year for Each Console',
+               x='Release Year',
+               y='Total Sales')
+     + pn.theme_minimal()
+     + pn.theme(figure_size=(14, 8),
+                legend_position='right',
+                legend_title=pn.element_text(size=10),
+                legend_box_margin=0.1,
+                panel_grid_major=pn.element_line(color='gray', linetype='dashed'),
+                panel_grid_minor=pn.element_line(color='lightgray', linetype='dotted'),
+                panel_background=pn.element_rect(color='white'))
+     + pn.guides(color=pn.guide_legend(title='Console'))
+     ).save("./fig/17_Top10_TotalSales_by_year_by_console.png")
+
+    # Not very informative, we will check the cumulatives sales over time !
+    top10_console_sales_by_years['cumulative_sales'] = (
+        top10_console_sales_by_years
+        .groupby('console')['sales_by_years']
+        .cumsum()
+    )
+    (pn.ggplot(top10_console_sales_by_years, pn.aes(x='release_year', y='cumulative_sales', color='console'))
+     + pn.geom_line()
+     + pn.geom_point()
+     + pn.labs(title='Evolution of Cumulatives Sales for Each Series',
+               x='Release Year',
+               y='Total Sales')
+     + pn.theme_minimal()
+     + pn.theme(figure_size=(14, 8),
+                legend_position='right',
+                legend_title=pn.element_text(size=10),
+                legend_box_margin=0.1,
+                panel_grid_major=pn.element_line(color='gray', linetype='dashed'),
+                panel_grid_minor=pn.element_line(color='lightgray', linetype='dotted'),
+                panel_background=pn.element_rect(color='white'))
+     + pn.guides(color=pn.guide_legend(title='Console'))
+     ).save("./fig/17_Top10_CumulativeSales_by_year_by_console.png")
