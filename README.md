@@ -10,6 +10,38 @@
 
 ---
 
+## 12/08/2024
+
+🚀 Nous voilà partis pour le cinquième et dernier jour de notre aventure data dans l'univers des jeux vidéo ! 
+
+🎮📊Aujourd'hui, on clôture cette campagne avec des insights passionnants et quelques nouveautés dans notre boîte à outils !
+
+1️⃣ 𝗦𝘄𝗶𝘁𝗰𝗵 𝘃𝗲𝗿𝘀 𝗗𝘂𝗰𝗸𝗗𝗕 : En plein cœur de ma formation data-upskilling, j'ai décidé de passer à DuckDB pour mettre en pratique les conseils de Benjamin Dubreu. Je trouve le requêtage SQL beaucoup plus clair et lisible. Un vrai game-changer pour mes analyses !
+
+2️⃣ 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘀𝗮𝘁𝗶𝗼𝗻 𝗮𝘃𝗲𝗰 𝗣𝗹𝗼𝘁𝗻𝗶𝗻𝗲 : Pour ceux qui, comme moi, viennent de R et adorent ggplot, Plotnine est une alternative fantastique à Matplotlib. La syntaxe est fidèle à la Grammar of Graphics et permet de créer des visualisations élégantes sans effort.
+
+3️⃣ 𝗔𝗻𝗮𝗹𝘆𝘀𝗲 𝗱𝗲𝘀 𝗦𝗲́𝗿𝗶𝗲𝘀 𝗱𝗲 𝗝𝗲𝘂𝘅 : J'ai décidé de faire un focus sur les séries de jeux. Résultat ? Call of Duty est la série la plus vendue ! Je garde les fonctions de Pandas dans ma boîte à outils : la fonction cumsum() m'évite de me replonger dans les CTE et les Window Functions en SQL (en vrai, c'est au programme, mais je n'ai pas encore abordé cette partie 🤫🙈).
+
+4️⃣ 𝗩𝗶𝘀𝘂𝗮𝗹𝗶𝘀𝗮𝘁𝗶𝗼𝗻 𝗱𝗲𝘀 𝗩𝗲𝗻𝘁𝗲𝘀 𝗽𝗮𝗿 𝗖𝗼𝗻𝘀𝗼𝗹𝗲 : En appliquant la même logique aux consoles, les courbes en cloche révèlent la durée de vie typique de 5 à 8 ans par console. Fascinant de voir comment les tendances évoluent !
+
+Cette campagne a été une véritable plongée dans l'analyse de données et le monde des jeux vidéo. Avec les bons outils et un peu de curiosité, on peut extraire des informations précieuses d'un simple jeu de données !
+
+Dans le cadre d'un projet data, il est important de considérer la composante métier ou le niveau de connaissance du domaine d'étude. Elle n'est 𝗽𝗮𝘀 𝗶𝗻𝗱𝗶𝘀𝗽𝗲𝗻𝘀𝗮𝗯𝗹𝗲 pour réaliser l'analyse, mais elle permet d'être bien plus 𝗮𝘂𝘁𝗼𝗻𝗼𝗺𝗲 sur son interprétation et facilite la prise de recul. Au cours de cette étude, j'ai relevé certains points qui m'interpellent, comme :
+
+1️⃣ GuitarHero et Madden NFL dans le Top 10 des séries de jeux vidéo les plus vendues, mais pas Pokémon ?
+2️⃣ SEGA qui cumule plus de ventes que Nintendo ?
+3️⃣ Les jeux de stratégie surreprésentés sur les supports PC, mais pas les jeux d'aventure à l'ancienne (Monkey Island, Carmen Sandiego, Syberia, ...) 
+
+En l'état, je me questionne sur la bonne qualité de mon JDD et je serais curieux de confirmer ces résultats avec d'autres sources.
+
+Je n'ai malheureusement pas réussi à maintenir le rythme d'un post par semaine sur ce projet, mais je suis très content d'avoir pu appliquer à cette étude les premiers conseils acquis de ma formation.
+
+Et vous, qu'avez-vous appris ? Des surprises ou des confirmations ? Partagez vos réflexions en commentaire !
+
+hashtag#DataAnalyse hashtag#JeuxVidéo hashtag#DuckDB hashtag#Plotnine hashtag#DataViz
+
+P.S. : Pour les curieux, le code complet de cette analyse est disponible sur GitHub ! 👉 https://lnkd.in/dfi3mzqN
+
 ## 25/07/2024
 
 🚀 C'est parti pour le J4 de notre aventure data dans l'univers des jeux vidéo ! 🎮📊
